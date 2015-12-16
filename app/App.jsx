@@ -1,9 +1,14 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var ReactRouter = require('react-router');
+var IndexRoute = ReactRouter.IndexRoute;
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Link = ReactRouter.Link;
 
-var Home = require('./Home.jsx');
-var About = require('./About.jsx');
-var Contact = require('./Contact.jsx');
+var Home = require('./home.jsx');
+var About = require('./about.jsx');
+var Contact = require('./contact.jsx');
 
 var App = React.createClass({
     getInitialState () {
@@ -21,29 +26,28 @@ var App = React.createClass({
     },
     
     render() {
-        var Child = Home;
-        if(this.state.route === '#about'){
-            Child = About;
-        } else if(this.state.route === '#contact'){
-            Child = Contact;
-        }
-        
-        
         return (
             <div>
-            <a href='#'> Home </a>
-            <a href='#about'> About </a>
-            <a href='#contact'> Contact </a>
+                <Link to='/'>Home</Link>
+                <Link to='/about/'>About</Link>
+                <Link to='/contact'>Contac </Link>
                 <div style={{ padding: 40 }}>
-                    <Child />
+                    { this.props.children }
                 </div>
             </div>   
-                
         )
     }
 })
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+    <Router>
+        <Route component={App} path='/'>
+            <IndexRoute component={Home} />
+            <Route component={About} path='about/:name' />
+            <Route component={Contact} path='contact' />
+        </Route>
+    </Router>
+    , document.getElementById('app'));
 
 
 
