@@ -30,7 +30,7 @@ var App = React.createClass({
             <div>
                 <Link to='/'>Home</Link>
                 <Link to='/about/'>About</Link>
-                <Link to='/contact'>Contac </Link>
+                <Link to='/contact'>Contact</Link>
                 <div style={{ padding: 40 }}>
                     { this.props.children }
                 </div>
