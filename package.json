@@ -10,9 +10,8 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
-    "history": "^1.13.1",
+    "babel-plugin-transform-strict-mode": "^6.3.13",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "react-router": "^1.0.2"
+    "react-dom": "^0.14.3"
   }
 }
